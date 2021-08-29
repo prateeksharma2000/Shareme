@@ -6,12 +6,21 @@ connectDB();
 const ejs = require('ejs');
 const path = require('path');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 app.use(express.static('public'));
 //app.use(express.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+
+//cors options
+const corsOptions = {
+    origin: process.env.ALLOWED_CLIENTS.split(',');
+    //origin is the adress of clients that can make ajax request on server
+}
+
+app.use(cors(corsOptions));
 
 //template
 app.set('views' , path.join(__dirname,'/views'));
