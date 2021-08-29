@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({
 
 //cors options
 const corsOptions = {
-    origin: process.env.ALLOWED_CLIENTS.split(',');
+    origin: process.env.ALLOWED_CLIENTS.split(',')
     //origin is the adress of clients that can make ajax request on server
 }
 
