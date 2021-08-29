@@ -11,7 +11,7 @@ const nodeCron = require('node-cron');
 const fetchData = require('./script');
 
 app.use(express.static('public'));
-//app.use(express.json());
+app.use(express.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
