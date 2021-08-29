@@ -7,6 +7,8 @@ const ejs = require('ejs');
 const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const nodeCron = require('node-cron');
+const fetchData = require('./script');
 
 app.use(express.static('public'));
 //app.use(express.json());
@@ -21,6 +23,11 @@ const corsOptions = {
 }
 
 app.use(cors(corsOptions));
+
+//nodecron
+nodeCron.schedule("0 2 * * * *", function() {
+    fetchData().then(process.exit);
+});
 
 //template
 app.set('views' , path.join(__dirname,'/views'));
